@@ -1,0 +1,78 @@
+h1 {
+    font-size: 32px;
+    line-height: 40px;
+    color: #202123;
+    font-weight: 700;
+    /* font-family: "ColfaxAI",helvetica,sans-serif; */
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
+}
+
+p {
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
+    /* font-weight: 600; */
+    font-size: 1.1rem;
+    color: #353740;
+    ;
+    line-height: 1.4;
+    margin-bottom: 15px;
+
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+table {
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
+    display: table;
+    /* border: none; */
+    /* font-size: 12px; */
+    border-collapse: collapse;
+    text-align: left;
+    border-spacing: 2px;
+    border-color: gray;
+    margin: 20px 0 15px;
+}
+
+th {
+    display: table-cell;
+    text-transform: uppercase;
+    font-family: consolas;
+    border-bottom: 1px solid #ececf1;
+}
+
+th:first-child {
+    padding-left: 0;
+    padding-right: 40px;
+}
+
+tr {
+    display: table-row;
+    border-bottom: 1px solid #ececf1;
+}
+
+td:first-child {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Roboto Mono", sfmono-regular, consolas, liberation mono, menlo, courier, monospace;
+    padding-right: 30px;
+
+}
+
+ul {
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
+    font-size: 1.1rem;
+    color: #353740;
+}
+
+/* td {
+    font-size: 12px;
+    font-family: "Roboto Mono",sfmono-regular,consolas,liberation mono,menlo,courier,monospace
+} */
+
+
+code {
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    
+}
