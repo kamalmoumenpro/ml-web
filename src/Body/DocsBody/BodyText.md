@@ -102,3 +102,47 @@ memory usage: 41.8+ KB
 Dans notre cas, nous comptons 205 observation pour chaque *features*. Toutes les observations non -non-Null-.
 Ceci signifie que, à priori, nous n'avons pas de perte de données ou des données qui manquent. 
 
+
+||count|mean|std|min|25%|50%|75%|max|
+|---|---|---|---|---|---|---|---|---|
+|car_ID|205.0|103.0|59.3|1.0|52.0|103.0|154.0|205.0|
+|symboling|205.0|0.83|1.3|-2.0|0.0|1.0|2.0|3.0|
+|wheelbase|205.0|98.8|6.0|86.6|94.5|97.0|102.4|120.9|
+|carlength|205.0|174.1|12.3|141.1|166.3|173.2|183.1|208.1|
+|carwidth|205.0|65.9|2.2|60.3|64.1|65.5|66.9|72.3|
+|carheight|205.0|53.7|2.4|47.8|52.0|54.1|55.5|59.8|
+|curbweight|205.0|2555.6|520.7|1488.0|2145.0|2414.0|2935.0|4066.0|
+|enginesize|205.0|126.9|41.6|61.0|97.0|120.0|141.0|326.0|
+|boreratio|205.0|3.3|0.3|2.54|3.15|3.31|3.58|3.94|
+|stroke|205.0|3.3|0.3|2.07|3.11|3.29|3.41|4.17|
+|compressionratio|205.0|10.1|4.0|7.0|8.6|9.0|9.4|23.0|
+|horsepower|205.0|104.1|39.6|48.0|70.0|95.0|116.0|288.0|
+|peakrpm|205.0|5125.1|477.0|4150.0|4800.0|5200.0|5500.0|6600.0|
+|citympg|205.0|25.2|6.5|13.0|19.0|24.0|30.0|49.0|
+|highwaympg|205.0|30.8|6.9|16.0|25.0|30.0|34.0|54.0|
+|price|205.0|13276.7|7988.9|5118.0|7788.0|10295.0|16503.0|45400.0|
+
+
+En observant de plus près la première description des données (en termes de répartition), on remarque que la plages features sont très variable. Le **boreratio** varie en 2.54 et 3.94, alors que le **peakrpm** varie entre 477.0 et 6600.0.
+
+regardons de plus près l'histogramme des ces deux features
+
+```python
+f, ax = plt.subplots(6,5,figsize=(25, 20))
+# ax.set_xscale("log")
+
+col_nmbrs = len(df.columns)
+for i in np.arange(0, col_nmbrs):
+    n = int(i/5)
+    m = i%5
+    # print(n, m)
+
+    sns.histplot(data=df, y=df.columns[i], ax=ax[n,m])
+```
+
+Dans le cas d'une proglématique de régression, il est nécessaire et crucial de prendre en compte le les poids relatifs de chaques features. sans travail préalable de pré-traitement des ces données, les algorithms de régression finiront par donner plus de poids au plus gros chiffre. Dans notre example, l'algorithme considéreras que le **peakrpm** est plus inflant que le **boreratio**. c'est injuste !
+
+Première étape de notre chemin est donc de mettre tout les faetures sur le même pied d'égalité et ramener toutes les valeurs à une seule plage. Dans notre cas et dans la pluspart des cas, ça sera entre 0 et 1.
+
+## Mise à l'échelle des données - Scaling
+Le scaling est une opération mathématique qui consiste à créer 
